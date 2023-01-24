@@ -132,9 +132,8 @@ dependencies {
      **/
     implementation "org.apereo.cas:cas-server-support-ldap"
     implementation "org.apereo.cas:cas-server-support-reports"
+    implementation "org.apereo.cas:cas-server-support-rest"
 
-    implementation "org.apereo.cas:cas-server-core-api-configuration-model"
-    implementation "org.apereo.cas:cas-server-webapp-init"
 
     if (project.hasProperty("casModules")) {
         def dependencies = project.getProperty("casModules").split(",")
