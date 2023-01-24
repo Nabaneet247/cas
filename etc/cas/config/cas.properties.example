@@ -1,0 +1,46 @@
+#spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration
+
+
+# CAS server config
+
+cas.server.name=http://localhost:8070
+cas.server.prefix=${cas.server.name}/cas
+server.ssl.enabled=false
+server.port=8070
+#server.ssl.key-store=file:/etc/cas/config/thekeystore
+#server.ssl.key-store-password=changeit
+logging.config=file:/etc/cas/config/log4j2.xml
+
+
+# LDAP server config
+
+cas.authn.ldap[0].type=AUTHENTICATED
+cas.authn.ldap[0].ldap-url=ldap://127.0.01:389
+cas.authn.ldap[0].base-dn=dc=example,dc=ac,dc=in
+cas.authn.ldap[0].search-filter=uid={user}
+cas.authn.ldap[0].bind-dn=cn=admin,dc=example,dc=ac,dc=in
+cas.authn.ldap[0].subtreeSearch=true
+cas.authn.ldap[0].bind-credential=changeit
+#cas.authn.ldap[0].password-encoder.encoding-algorithm=MD5
+#cas.authn.ldap[0].useSsl=false
+cas.authn.ldap[0].useStartTls=false
+cas.authn.ldap[0].passwordPolicy.enabled=false
+
+
+#cas.authn.throttle.core.app-code=CAS
+#cas.authn.throttle.core.username-parameter=username
+#cas.authn.throttle.failure.range-seconds=15
+#cas.authn.throttle.failure.threshold=2
+#cas.authn.throttle.failure.throttle-window-seconds=10
+#cas.authn.throttle.failure.code=AUTHENTICATION_FAILED_THROTTLED
+
+
+cas.authn.ldap[0].principalAttributeId=cn
+cas.authn.ldap[0].allowMissingPrincipalAttributeValue=false
+cas.authn.ldap[0].principalAttributeList=[list of attributes to fetch on login]
+
+# ttl=16+ hrs
+cas.ticket.tgt.timeout.max-time-to-live-in-seconds=60000
+cas.ticket.tgt.core.only-track-most-recent-session=true
+cas.ticket.tgt.core.max-length=30
+
